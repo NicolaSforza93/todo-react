@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import './App.css'
+import TodoApp from "./components/TodoApp"
 
 function App() {
 
   return (
     <>
-
+      <div className="container mx-auto w-5/12 p-6 mt-20 relative">
+        <TodoApp />
+      </div>
     </>
   )
 }
 
-export default App
+export default App;
