@@ -66,58 +66,78 @@ function TodoApp() {
             <figure className='marker absolute'>
                 <img src="/76321-Photoroom.png-Photoroom (2).png" alt="" />
             </figure>
-            <div>
+            <div className='pt-2.5'>
                 <img className='circle relative' src="/6382f018-a739-4a66-ad9e-47e8cd031af1-Photoroom.png-Photoroom.png" alt="" />
                 <h1 className='title uppercase text-3xl text-center absolute'>Todo List</h1>
-            </div>
+            </div >
             <div>
-                <form className='flex py-7 w-9/12 mx-auto'>
-                    <input placeholder='New Todo' type="text" value={newTodo} onChange={handleTodoChange} className='grow focus:outline-none bg-inherit' />
+                <form className='flex py-7 lg:w-9/12 mx-auto'>
+                    <input placeholder='Nuovo todo' type="text" value={newTodo} onChange={handleTodoChange} className='grow focus:outline-none bg-inherit' />
                     <button className='btn-add' type='submit' onClick={handleAddTodo}>
                         <span>
-                            Add
+                            Aggiungi
                         </span>
                     </button>
                 </form>
                 {
                     todos.length > 0 ?
-                        <ul className='todos'>
-                            {
-                                todos.map((todo, index) => (
-                                    <li key={index} className="todo cursor-pointer flex gap-4">
-                                        {
-                                            isEdit && editedTodo.index === index ?
-                                                <>
-                                                    <div className="checkbox-wrapper">
-                                                        <input id={index} type="checkbox" checked={todo.done} />
-                                                        <label className="check-box align-middle" htmlFor={index}></label>
-                                                    </div>
-                                                    <input type="text" value={editedTodo.text} onChange={(e) => setEditedTodo({ ...editedTodo, text: e.target.value })} className='grow focus:outline-none bg-inherit' />
-                                                    <button onClick={handleTodoSave} className='btn-save'>
-                                                        save
-                                                    </button>
-                                                </>
-                                                :
-                                                <>
-                                                    <div className="checkbox-wrapper">
-                                                        <input id={index} type="checkbox" checked={todo.done} onChange={() => toggleTodo(index)} />
-                                                        <label className="check-box align-middle" htmlFor={index}></label>
-                                                    </div>
-                                                    <span className='grow'>{todo.text}</span>
-                                                    <div className='flex gap-2'>
-                                                        <button onClick={() => handleTodoEdit(index, todo.text)} className='btn-edit text-blue-500'>
-                                                            edit
+                        <>
+                            <ul className='todos'>
+                                {
+                                    todos.map((todo, index) => (
+                                        <li key={index} className="todo cursor-pointer flex gap-4 py-1">
+                                            {
+                                                isEdit && editedTodo.index === index ?
+                                                    <>
+                                                        <div className="checkbox-wrapper">
+                                                            <input id={index} type="checkbox" checked={todo.done} />
+                                                            <label className="check-box align-middle" htmlFor={index}></label>
+                                                        </div>
+                                                        <input type="text" value={editedTodo.text} onChange={(e) => setEditedTodo({ ...editedTodo, text: e.target.value })} className='grow focus:outline-none bg-inherit' />
+                                                        <button onClick={handleTodoSave} className='btn-save text-xs'>
+                                                            <span>
+                                                                Salva
+                                                            </span>
                                                         </button>
-                                                        <button onClick={(e) => handleTodoDelete(index, e)} className='btn-delete text-red-500'>
-                                                            delete
-                                                        </button>
-                                                    </div>
-                                                </>
-                                        }
-                                    </li>
-                                ))
-                            }
-                        </ul>
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <div className="checkbox-wrapper">
+                                                            <input id={index} type="checkbox" checked={todo.done} onChange={() => toggleTodo(index)} />
+                                                            <label className="check-box align-middle" htmlFor={index}></label>
+                                                        </div>
+                                                        <span className='grow'>{todo.text}</span>
+                                                        <div className='flex gap-2'>
+                                                            <button onClick={() => handleTodoEdit(index, todo.text)} className='btn-edit text-blue-500 text-xs'>
+                                                                <span>
+                                                                    Modifica
+                                                                </span>
+                                                            </button>
+                                                            <button onClick={(e) => handleTodoDelete(index, e)} className='btn-delete text-red-500 text-xs'>
+                                                                <span>
+                                                                    Cancella
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </>
+                                            }
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                            <div className='absolute right-2.5 bottom-2.5'>
+                                {
+                                    todos.length > 3 ?
+                                        <figure className='w-16'>
+                                            <img src="/87898-OI9W4D-332-Photoroom.png-Photoroom (2).png" alt="" />
+                                        </figure>
+                                        :
+                                        <figure className='w-16'>
+                                            <img src="/87898-OI9W4D-332-Photoroom.png-Photoroom (1).png" alt="" />
+                                        </figure>
+                                }
+                            </div>
+                        </>
                         :
                         <div className='flex flex-col items-center'>
                             <p>Non ci sono todo</p>

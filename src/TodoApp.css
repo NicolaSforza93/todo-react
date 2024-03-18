@@ -1,11 +1,25 @@
 .container {
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -5px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.11) -4px 3px 4px, rgba(0, 0, 0, 0.3) -13px 15px 13px -3px, rgba(0, 0, 0, 0.2) 0px -5px 0px inset;
     border-radius: 10px;
     min-height: 550px;
     background-color: transparent;
     background-image: radial-gradient(#0000002d 1px, whitesmoke 1px);
     background-size: 30px 30px;
 }
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0;
+    border-width: 60px 16px 16px 60px;
+    border-style: solid;
+    border-color: rgb(230, 222, 209) rgb(230, 222, 209) whitesmoke whitesmoke;
+    display: block;
+    border-bottom-left-radius: 10px;
+    box-shadow: -21px 30px 41px -8px lightgrey;
+}
+
 
 /* Check-box */
 .checkbox-wrapper {
@@ -207,18 +221,62 @@
 
 .btn-save {
     color: #34b93d;
+    background-color: #34b93d;
+}
+
+.btn-edit {
+    background-color: rgb(59 130 246);
+}
+
+.btn-delete {
+    background-color: red;
 }
 
 .btn-edit,
 .btn-delete,
 .btn-save {
-    filter: drop-shadow(3px 4px 1px lightgray)
+    width: 80px;
+    padding: 0;
+    border: none;
+    transform: rotate(5deg);
+    transform-origin: center;
+    text-decoration: none;
+    cursor: pointer;
+    padding-bottom: 3px;
+    border-radius: 50px;
+    box-shadow: 0 2px 0 #494a4b;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+.btn-edit span,
+.btn-delete span,
+.btn-save span {
+    background: white;
+    display: block;
+    padding: 3px 0px;
+    border-radius: 50px;
+    border: 2px solid #494a4b;
+}
+
+.btn-edit:active,
+.btn-delete:active,
+.btn-save:active {
+    transform: translateY(5px);
+    padding-bottom: 0px;
+    outline: 0;
+}
+
+/* .btn-edit,
+.btn-delete,
+.btn-save {
+    filter: drop-shadow(3px 4px 1px lightgray)
+} */
 
 .marker {
     width: 120px;
-    left: 0;
-    top: -28px;
+    left: -65px;
+    top: 0px;
+    transform: rotate(88deg);
     filter: drop-shadow(2px 4px 3px grey);
 }
 
@@ -232,11 +290,16 @@
 }
 
 .title {
-    top: 54px;
+    top: 66px;
     left: 50%;
     transform: translate(-50%);
 }
 
 form input {
     border-bottom: 2px dashed brown;
+}
+
+.rings {
+    top: -51px;
+    left: 0px;
 }
